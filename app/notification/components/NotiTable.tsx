@@ -1,4 +1,8 @@
+import { useRouter } from "next/navigation";
+
 export const NotiTable = ({ currentItems }: any) => {
+  const router = useRouter();
+
   return (
     <>
       <div className="font-bold text-[20px] mb-[20px]">긴급공지 관리</div>
@@ -16,7 +20,8 @@ export const NotiTable = ({ currentItems }: any) => {
           {currentItems.map((item: any) => (
             <tr
               key={item.id}
-              className="h-[48px] text-[14px] text-center border-b border-[#D8D8D8]"
+              className="h-[48px] text-[14px] text-center border-b border-[#D8D8D8] cursor-pointer hover:bg-[#F5F8FF]"
+              onClick={() => router.push(`/notification/detail?id=${item.id}`)}
             >
               <td className="text-[12px] text-[#979797]">{item.column1}</td>
               <td className="text-left text-[16px]">{item.column2}</td>
